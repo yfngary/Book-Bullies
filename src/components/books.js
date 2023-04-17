@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import './books.css';
 import axios from "axios";
 
@@ -7,14 +7,24 @@ const initialFormValues = { title: '', genre: '', rating: 0, summary: '', person
 export default function Bookpage() {
 const [values, setValues] = useState(initialFormValues);
 
+const postBook = (book) => {
+    axios.post('http://localhost:3001/books', book)
+        .then(res => {
+            console.log(res)
+        })
+        .catch(err => console.log(err))
+}
+
 const onChange = evt => {
     const { id, value } = evt.target;
     setValues({...values, [id]: value})
+    console.log('values');
 }
 
 const onSubmit = evt => {
     evt.preventDefault();
     postBook(values);
+    console.log(values);
 }
 
     return (
@@ -31,19 +41,21 @@ const onSubmit = evt => {
                 <div class='description-section'>
 
                 </div>
-                <form>
+                <form onSubmit={onSubmit}>
                     <label for="book-title">Book Title:</label>
-                    <input type="text" id="book-title" name="book-title" required />
+                    <input type="text" id="title" name="book-title" required onChange={onChange}/>
                     <label for="book-genre">Select a Genre:</label>
-                    <select id="book-genre" name="book-genre">
+                    <select id="genre" name="book-genre" onChange={onChange}>
                         <option value="">--Please choose an option--</option>
                         <option value="action">Action</option>
                         <option value="adventure">Adventure</option>
                         <option value="biography">Biography</option>
+                        <option value="business">Business</option>
                         <option value="comedy">Comedy</option>
                         <option value="crime">Crime</option>
                         <option value="drama">Drama</option>
                         <option value="fantasy">Fantasy</option>
+                        <option value="finance">Finance</option>
                         <option value="historical">Historical</option>
                         <option value="horror">Horror</option>
                         <option value="mystery">Mystery</option>
@@ -53,11 +65,11 @@ const onSubmit = evt => {
                         <option value="thriller">Thriller</option>
                     </select>
                     <label for="rating">Rating (1-10):</label>
-                    <input type="number" id="rating" name="rating" min="1" max="10" required></input>
+                    <input type="number" id="rating" name="rating" min="1" max="10" required onChange={onChange}></input>
                     <label for="summary">Brief summary:</label>
-                    <textarea id="summary" name="summary"></textarea>
+                    <textarea id="summary" name="summary" onChange={onChange}></textarea>
                     <label for="personal-opinion">Personal Opinion:</label>
-                    <textarea id="personal-opinion" name="personal-opinion"></textarea>
+                    <textarea id="personal" name="personal-opinion" onChange={onChange}></textarea>
                     <button type="submit">Submit</button>
                 </form>
             </div>
