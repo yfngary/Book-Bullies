@@ -43,9 +43,9 @@ const onSubmit = evt => {
                 </div>
                 <form onSubmit={onSubmit}>
                     <label for="book-title">Book Title:</label>
-                    <input type="text" id="title" name="book-title" required onChange={onChange}/>
+                    <input value={values.title} type="text" id="title" name="book-title" required onChange={onChange}/>
                     <label for="book-genre">Select a Genre:</label>
-                    <select id="genre" name="book-genre" onChange={onChange}>
+                    <select value={values.genre} id="genre" name="book-genre" onChange={onChange}>
                         <option value="">--Please choose an option--</option>
                         <option value="action">Action</option>
                         <option value="adventure">Adventure</option>
@@ -65,11 +65,11 @@ const onSubmit = evt => {
                         <option value="thriller">Thriller</option>
                     </select>
                     <label for="rating">Rating (1-10):</label>
-                    <input type="number" id="rating" name="rating" min="1" max="10" required onChange={onChange}></input>
+                    <input value={values.rating} type="number" id="rating" name="rating" min="1" max="10" required onChange={onChange}></input>
                     <label for="summary">Brief summary:</label>
-                    <textarea id="summary" name="summary" onChange={onChange}></textarea>
+                    <textarea value={values.summary} id="summary" name="summary" onChange={onChange}></textarea>
                     <label for="personal-opinion">Personal Opinion:</label>
-                    <textarea id="personal" name="personal-opinion" onChange={onChange}></textarea>
+                    <textarea value={values.personal} id="personal" name="personal-opinion" onChange={onChange}></textarea>
                     <button type="submit">Submit</button>
                 </form>
             </div>

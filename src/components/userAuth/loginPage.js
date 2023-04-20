@@ -10,7 +10,7 @@ export default function loginPage() {
 const [values, setValues] = useState(initialFormValues);
 
 function login(values) {
-    axios.post('http://localhost:3001/login', values)
+    axios.post('http://localhost:3001/auth/login', values)
         .then(res => {
             console.log(res)
             const token = res.data.token
@@ -28,6 +28,7 @@ const onChange = evt => {
 const onSubmit = evt => {
     evt.preventDefault();
     login(values)
+    setValues(initialFormValues);
 }
 
     return (
