@@ -1,0 +1,38 @@
+.book-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .book-item {
+    width: 300px;
+    margin-bottom: 30px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .book-item h2 {
+    font-size: 20px;
+    margin-top: 0;
+  }
+  
+  .book-item p {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .book-item button {
+    background-color: #2ecc71;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .book-item button:hover {
+    background-color: #27ae60;
+  }

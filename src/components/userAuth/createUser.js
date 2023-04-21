@@ -1,19 +1,12 @@
 import React, { useState } from "react";
 import './createUser.css';
-import axios from "axios";
+// import axios from "axios";
 
 const initialFormValues = { username: '', email: '', password: '' }
 
-export default function createUser() {
+export default function createUser(props) {
 
 const [values, setValues] = useState(initialFormValues);
-
-function createUser(values) {
-    axios.post('http://localhost:3001/auth/register', values)
-        .then(res => {
-            console.log(res)
-        })
-}
 
 const onChange = evt => {
     const { id, value } = evt.target
@@ -22,8 +15,9 @@ const onChange = evt => {
 
 const onSubmit = evt => {
     evt.preventDefault();
-    createUser(values)
+    props.createUser(values)
     setValues(initialFormValues)
+    props.redirectToLogin()
 }
 
     return (

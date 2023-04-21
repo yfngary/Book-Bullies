@@ -1,19 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom'
 import './books.css';
-import axios from "axios";
+// import axios from "axios";
 
 const initialFormValues = { title: '', genre: '', rating: 0, summary: '', personal: '' }
 
-export default function Bookpage() {
+export default function Bookpage(props) {
 const [values, setValues] = useState(initialFormValues);
+const navigate = useNavigate();
+const token = localStorage.getItem('token');
 
-const postBook = (book) => {
-    axios.post('http://localhost:3001/books', book)
-        .then(res => {
-            console.log(res)
-        })
-        .catch(err => console.log(err))
-}
+useEffect(() => {
+    if(!token) {
+        navigate('/')
+    } else {
+        console.log('else')
+    }
+}, [])
 
 const onChange = evt => {
     const { id, value } = evt.target;
@@ -23,8 +26,9 @@ const onChange = evt => {
 
 const onSubmit = evt => {
     evt.preventDefault();
-    postBook(values);
+    props.postBook(values);
     console.log(values);
+    setValues(initialFormValues);
 }
 
     return (

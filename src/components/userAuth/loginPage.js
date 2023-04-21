@@ -1,24 +1,12 @@
 import React, { useState } from "react";
 import './loginPage.css';
 import { NavLink } from "react-router-dom";
-import axios from "axios";
 
 const initialFormValues = { username: '', password: '' }
 
-export default function loginPage() {
+export default function loginPage(props) {
 
 const [values, setValues] = useState(initialFormValues);
-
-function login(values) {
-    axios.post('http://localhost:3001/auth/login', values)
-        .then(res => {
-            console.log(res)
-            const token = res.data.token
-            localStorage.setItem('token', token);
-        })
-        .catch(err => console.log(err))
-}
-
 
 const onChange = evt => {
     const { id, value } = evt.target
@@ -27,7 +15,7 @@ const onChange = evt => {
 
 const onSubmit = evt => {
     evt.preventDefault();
-    login(values)
+    props.login(values)
     setValues(initialFormValues);
 }
 
@@ -36,9 +24,9 @@ const onSubmit = evt => {
             <form onSubmit={onSubmit}>
                 <h1>Login</h1>
                 <label for="username">username:</label>
-                <input type="text" id="username" name="username" onChange={onChange} required />
+                <input type="text" id="username" name="username" onChange={onChange} value={values.username} required />
                 <label for="password">Password:</label>
-                <input type="password" id="password" name="password" onChange={onChange} required />
+                <input type="password" id="password" name="password" onChange={onChange} value={values.password} required />
                 <input type="submit" value="Login" />
             </form>
             <div>
