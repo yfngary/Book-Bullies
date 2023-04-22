@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useNavigate } from 'react-router-dom'
+// import { useNavigate } from 'react-router-dom'
 import './books.css';
 // import axios from "axios";
 
@@ -7,27 +7,23 @@ const initialFormValues = { title: '', genre: '', rating: 0, summary: '', person
 
 export default function Bookpage(props) {
 const [values, setValues] = useState(initialFormValues);
-const navigate = useNavigate();
+// const navigate = useNavigate();
 const token = localStorage.getItem('token');
 
 useEffect(() => {
     if(!token) {
-        navigate('/')
-    } else {
-        console.log('else')
+        props.redirectToLogin2()
     }
 }, [])
 
 const onChange = evt => {
     const { id, value } = evt.target;
     setValues({...values, [id]: value})
-    console.log('values');
 }
 
 const onSubmit = evt => {
     evt.preventDefault();
     props.postBook(values);
-    console.log(values);
     setValues(initialFormValues);
 }
 

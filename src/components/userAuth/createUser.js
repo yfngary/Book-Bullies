@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import './createUser.css';
 // import axios from "axios";
+import { NavLink } from "react-router-dom";
 
 const initialFormValues = { username: '', email: '', password: '' }
 
@@ -32,6 +33,7 @@ const onSubmit = evt => {
             <input value={values.password} type="password" id="password" name="password" onChange={onChange} required />
             <button type="submit">Create User</button>
             </form>
+            <h2>Already have a login? <NavLink id="login" to='/'>Click Here</NavLink></h2>
         </div>
     )
 }

@@ -1,14 +1,14 @@
 import React from 'react';
 import './homepage.css';
 
-export default function homepage() {
+export default function homepage(props) {
     return (
         <div>
             <section class="hero-banner">
                 <div class="container">
                     <h1>Bullies who encourage reading? You betcha!</h1>
                     <p>We take the hassle out of finding your next great read - The Book Bullies have got your back!</p>
-                    <button class="btn">Let's Talk Books</button>
+                    <button class="btn" onClick={props.redirectToBooks} >Let's Talk Books</button>
                 </div>
             </section>
             <div class="top-books">
@@ -45,7 +45,7 @@ export default function homepage() {
                 <div class='join-today'>
                     <h2>Want to be able to post your own books and thoughts?</h2>
                     <p>Be Part of a Community that Supports Reading - Join the Book Bullies Now!</p>
-                    <button class='btn'>Join Today</button>
+                    <button onClick={props.redirectToLogin2} class='btn'>Join Today</button>
                     <div class='copyright'>
                         <h3>Copyright © 2023 Book Bullies. All rights reserved.</h3>
                         <h3>If you have any questions about our copyright policy, please contact us at thebookbullies@gmail.com.</h3>

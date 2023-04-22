@@ -11,7 +11,6 @@ nav {
     font-size: 18px;
     padding: 10px 20px;
   }
-  
   .logo a {
     color: #fff;
     font-weight: bold;
@@ -32,55 +31,26 @@ nav {
     font-size: 16px;
   }
   
-  .burger {
+  .nav-btn {
     display: none;
   }
   
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: 428px) {
     .nav-links {
       display: none;
     }
-    
-    .burger {
-      display: block;
-      cursor: pointer;
-    }
-    
-    .burger div {
-      width: 25px;
-      height: 3px;
-      background-color: #fff;
-      margin: 5px;
-      transition: all 0.3s ease;
-    }
-    
-    .nav-active {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around;
-      align-items: center;
-      height: 250px;
-    }
-    
-    .nav-active li {
-      opacity: 0;
-    }
-    
-    .nav-active li a {
-      font-size: 20px;
-      color: #fff;
-    }
-    
-    .burger.active div:nth-child(2) {
-      opacity: 0;
-    }
-    
-    .burger.active div:nth-child(1) {
-      transform: rotate(45deg) translate(5px, 5px);
-    }
-    
-    .burger.active div:nth-child(3) {
-      transform: rotate(-45deg) translate(5px, -5px);
+  
+    .nav-btn {
+    display: block;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding-top: -30px;
+    /* margin-top: -20px; */
+    padding-bottom: -20px;
+    line-height: 6px;
     }
 }
 

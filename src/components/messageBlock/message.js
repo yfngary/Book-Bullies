@@ -9,7 +9,7 @@ const Message = (props) => {
       setVisible(true);
       const timer = setTimeout(() => {
         setVisible(false);
-      }, 6000); // The message will disappear after 2 seconds
+      }, 8000); // The message will disappear after 2 seconds
       return () => clearTimeout(timer);
     }, [message]);
   
